@@ -23,6 +23,7 @@ nav h1 {
 .content h1, .content h2, button {
     font-family: "Mona Sans", sans-serif;
     font-weight: 600;
+    cursor: url("../Other/Plane_Cursor1.png"),auto;
 }
 
 .headings {
@@ -39,4 +40,10 @@ span {
 
 button:hover {
     transform: scale(0.9);
+    cursor: url("../Other/Plane_Cursor1.png"),auto;
+}
+
+.image-container {
+    top: -28%;
+    left: 17%;
 }
