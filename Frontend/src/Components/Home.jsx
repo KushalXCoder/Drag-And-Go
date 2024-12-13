@@ -65,7 +65,10 @@ const Home = () => {
             <source src={Travel} />
           </video>
         </motion.div>
-        {/*  <motion.h1 className='offer text-white absolute bottom-28 text-5xl'>What we offer ?</motion.h1> */}
+        <motion.h1 className='offer text-white absolute bottom-28 text-5xl'
+        initial={{opacity: 0}}
+        whileInView={{opacity: 1, transition:{duration: 2}}}
+        >What we offer ?</motion.h1>
       </div>
       <div className="container3 w-screen bg-black">
         <motion.div className="box1 h-1/4 w-full flex mb-16"
