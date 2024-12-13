@@ -1,0 +1,42 @@
+@font-face {
+    font-family: headings;
+    src: url(../Fonts/Funsized-gJEP.ttf);
+}
+
+.container1, .container2 {
+    background-color: #000000;
+    background-image: linear-gradient(160deg, #000000 0%, #000000 100%);
+}
+
+nav {
+    font-family: headings;
+}
+
+nav h1 {
+    color: khaki;
+}
+
+.content {
+    height: calc(100% - 100px);
+}
+
+.content h1, .content h2, button {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 600;
+}
+
+.headings {
+    left: 28%;
+    color: ivory;
+}
+
+span {
+    font-family: headings;
+    background: linear-gradient(to right, #1D77CF 34%, #0C2ECF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+button:hover {
+    transform: scale(0.9);
+}
