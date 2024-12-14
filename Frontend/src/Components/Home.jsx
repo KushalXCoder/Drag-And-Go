@@ -71,6 +71,7 @@ const Home = () => {
         >
           <video autoPlay muted loop className="w-full h-full">
             <source src={Travel} />
+            Hi
           </video>
         </motion.div>
         <motion.h1 className='offer text-white absolute bottom-28 text-5xl'
