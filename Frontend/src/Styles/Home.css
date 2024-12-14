@@ -60,6 +60,6 @@ span {
     font-family: headings;
 }
 
-.features-text {
+.features-text, .already-logged-in {
     font-family: "Mona Sans", sans-serif;
 }

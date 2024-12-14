@@ -1,7 +1,7 @@
 import {React, useRef, useEffect} from 'react';
 import '../Styles/Home.css';
 import { motion, useAnimation, useInView } from "framer-motion";
-import Travel from "../Other/Travel.mp4";
+// import Travel from "../Other/Travel.mp4";
 import Photo from "../Other/DragAndDrop.png";
 import Flight from "../Other/Flight.jpg";
 import AI from "../Other/AI.webp";
@@ -70,8 +70,7 @@ const Home = () => {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <video autoPlay muted loop className="w-full h-full">
-            <source src={Travel} />
-            Hi
+            {/* <source src={Travel} /> */}
           </video>
         </motion.div>
         <motion.h1 className='offer text-white absolute bottom-28 text-5xl'
