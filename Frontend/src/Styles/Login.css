@@ -1,0 +1,35 @@
+@font-face {
+    font-family: headings;
+    src: url(../Fonts/Funsized-gJEP.ttf);
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.6px);
+    -webkit-backdrop-filter: blur(4.6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.quote h1 {
+    font-family: "Mona Sans", sans-serif;
+}
+
+.welcome {
+    font-family: headings !important;
+    color: midnightblue;
+}
+
+.submit-container, .submit-button {
+    cursor: url("../Other/Plane_Cursor1.png"),auto;
+    font-family: "Mona Sans", sans-serif;
+}
+
+.submit-button:hover {
+    transform: scale(0.9);
+}
+
+.other-options {
+    font-family: "Mona Sans", sans-serif;
+}

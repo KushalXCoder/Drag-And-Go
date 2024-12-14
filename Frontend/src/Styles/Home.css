@@ -19,7 +19,7 @@ nav h1 {
     height: calc(100% - 100px);
 }
 
-.content h1, .content h2, button {
+.content h1, .content h2, .button-container {
     font-family: "Mona Sans", sans-serif;
     font-weight: 600;
     cursor: url("../Other/Plane_Cursor1.png"),auto;
@@ -37,7 +37,7 @@ span {
     -webkit-text-fill-color: transparent;
 }
 
-button:hover {
+.button-container button:hover {
     transform: scale(0.9);
     cursor: url("../Other/Plane_Cursor1.png"),auto;
 }

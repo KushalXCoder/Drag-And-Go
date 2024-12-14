@@ -5,6 +5,7 @@ import Travel from "../Other/Travel.mp4";
 import Photo from "../Other/DragAndDrop.png";
 import Flight from "../Other/Flight.jpg";
 import AI from "../Other/AI.webp";
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
@@ -22,9 +23,16 @@ const Home = () => {
     }
   }, [isInView, controls]);
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/login');
+    console.log("Navigated");
+  }
+
   // Other code
 
   return (
+
     <>
       {/* Navbar */}
       <nav className='w-full px-8 py-8 bg-transparent fixed z-10'>
@@ -48,7 +56,7 @@ const Home = () => {
             <h2 className='text-6xl mt-2 text-center'>using Drag & Drops .</h2>
           </motion.div>
           <div className="button-container w-full flex justify-center">
-            <button className='w-1/6 px-5 py-3 text-white bg-blue-500 mt-12 rounded-md shadow-[10px_10px_0px_0px_rgba(200,200,200,0.4)]'>Get Started</button>
+            <button className='w-1/6 px-5 py-3 text-white bg-blue-500 mt-12 rounded-md shadow-[10px_10px_0px_0px_rgba(200,200,200,0.4)]' onClick={handleClick}>Get Started</button>
           </div>
         </div>
       </div>
@@ -61,7 +69,7 @@ const Home = () => {
           initial={{ scale: 1 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          <video autoPlay muted className="w-full h-full">
+          <video autoPlay muted loop className="w-full h-full">
             <source src={Travel} />
           </video>
         </motion.div>
