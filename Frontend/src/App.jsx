@@ -2,6 +2,7 @@ import './App.css'
 import Home from './Components/Home'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
+import DragPage from './Components/DragPage';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/login' element={<Login/>}/>
+            <Route path='/drag-place' element={<DragPage/>}/>
         </Routes>
       </BrowserRouter>
     </>

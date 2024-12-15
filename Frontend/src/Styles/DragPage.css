@@ -1,0 +1,26 @@
+.drag-content-container {
+    height: calc(100vh - 100px);
+}
+
+[data-swapy-slot] {
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border: 1px dashed #ddd;
+}
+  
+  [data-swapy-item] {
+    cursor: grab;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+  
+  [data-swapy-item]:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  

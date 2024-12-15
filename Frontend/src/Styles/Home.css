@@ -3,16 +3,8 @@
     src: url(../Fonts/Funsized-gJEP.ttf);
 }
 
-.container1, .container2 {
-    background-color: #000000;
-}
-
 nav {
     font-family: headings;
-}
-
-nav h1 {
-    color: khaki;
 }
 
 .content {
@@ -27,7 +19,7 @@ nav h1 {
 
 .headings {
     left: 28%;
-    color: ivory;
+    /* color: ivory; */
 }
 
 span {

@@ -10,13 +10,15 @@ import X from "../Other/x.png";
 import Whatsapp from "../Other/whatsapp.png";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
     const {register,handleSubmit, formState: { errors }} = useForm();
+    const navigate = useNavigate();
 
     const handleClick = () => {
-
+        navigate('/drag-place');
     }
 
     return (
