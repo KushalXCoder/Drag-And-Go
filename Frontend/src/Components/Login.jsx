@@ -8,6 +8,7 @@ import Whatsapp from "../Other/whatsapp.png";
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from "axios";
 
 const Login = () => {
 
@@ -26,9 +27,27 @@ const Login = () => {
 
     const [signUp, setSignUp] = useState(true);
 
-    const handleUserSubmit = (e) => {
+    const handleUserSubmit = async (e) => {
         e.preventDefault();
         console.log(userDetails);
+
+        if(signUp) {
+            try {
+                const response = await axios.post("http://localhost:3000/users/signin", userDetails);
+                console.log(response.data);  
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        else {
+            try {
+                const response = await axios.post("http://localhost:3000/users/login", userDetails);
+                console.log(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
         navigate('/drag-place');
     }
 
