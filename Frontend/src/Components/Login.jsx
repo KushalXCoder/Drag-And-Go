@@ -1,88 +1,99 @@
 import React from 'react';
 import Background from "../Other/Background.jpeg";
 import "../Styles/Login.css";
-import { useForm } from "react-hook-form";
-import Email from "../Other/email.gif";
-import Password from "../Other/password.gif";
 import Instagram from "../Other/instagram.png";
 import Snapchat from "../Other/social.png";
 import X from "../Other/x.png";
 import Whatsapp from "../Other/whatsapp.png";
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Login = () => {
 
-    const {register,handleSubmit, formState: { errors }} = useForm();
     const navigate = useNavigate();
+    const [userDetails, setUserDetails] = useState({
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: ''
+    });
 
-    const handleClick = () => {
+    const handleInputChange = (e) => {
+        const {id, value} = e.target;
+        setUserDetails({...userDetails, [id]: value});
+    }
+
+    const [signUp, setSignUp] = useState(true);
+
+    const handleUserSubmit = (e) => {
+        e.preventDefault();
+        console.log(userDetails);
         navigate('/drag-place');
     }
 
     return (
         <>
-            <GoogleOAuthProvider clientId={import.meta.env.VITE_client_Id}>
-                <div className="container1 h-screen w-screen bg-black justify-items-center content-center relative overflow-hidden">
-                    <img src={Background} alt="" className='absolute top-0'/>
-                    <div className="login-form h-4/5 w-4/5 rounded-md flex justify-center">
-                        {/* <div className="content-container h-full w-2/4 px-10 py-12 border-2 border-r-0 rounded-md">
-                            <div className="quote text-center text-3xl">
-                                <h1>TRAVEL IS THE ONLY THING</h1>
-                                <h1>YOU BUY THAT MAKES YOU</h1>
-                                <h1 className='richer font-bold mt-2'>RICHER !</h1>
+            <div className="container1 h-screen w-screen bg-black justify-items-center content-center relative overflow-hidden">
+                <img src={Background} alt="" className='absolute top-0'/>
+                <div className="login-form min-h-4/5 min-w-4/5 h-4/5 w-4/5 rounded-md flex justify-center">
+                    <div className="form-container h-full w-2/5 border border-white p-5">
+                        <h1 className='welcome text-center text-3xl mt-2'>Welcome !</h1>
+                        <form className="max-w-sm mx-auto mt-10" onSubmit={(e) => handleUserSubmit(e)}>
+                            {signUp && (
+                            <div className="mb-5 flex">
+                                <input type="text" id="firstname" value={userDetails.firstname} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 me-3" placeholder="First Name" required />
+                                <input type="text" id="lastname" value={userDetails.lastname} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Last Name" required />
                             </div>
-                            <div className="follow-us"></div>
-                        </div> */}
-                        <div className="form-container h-full w-2/5 border border-white p-5">
-                            <h1 className='welcome text-center text-3xl mt-2'>Welcome !</h1>
-                            <form className="max-w-sm mx-auto mt-10">
-                                <div className="mb-5 flex items-center">
-                                    <label htmlFor="email" className='inline-block mr-2'>
-                                        <img src={Email} alt="email photo" className='h-10'/>
-                                    </label>
-                                    <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter your Email" required />
+                            )}
+                            <div className="mb-5 flex items-center">
+                                <input type="email" id="email" value={userDetails.email} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter your Email" required />
+                            </div>
+                            <div className="mb-5 flex">
+                                <input type="password" id="password" value={userDetails.password} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter your Password" required />
+                            </div>
+                            <div className="submit-container w-full flex justify-center">
+                                <button type="submit" className="submit-button text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-3/4 px-5 py-2.5 shadow-[10px_10px_0_0_rgba(0,0,0,0.8)]">
+                                    {signUp ? 'Sign In' : 'Log In'}
+                                </button>
+                            </div>
+                            {signUp ? (
+                            <p className='text-center mt-5 text-blue-900'>Already have an account ?
+                                <span className="font-bold text-blue-900 hover:underline" onClick={() => setSignUp(false)}> Log In</span>
+                            </p>
+                            )
+                            :
+                            (
+                            <p className='text-center mt-5 text-blue-900'>New User ?
+                                <span className="font-bold text-blue-900 hover:underline" onClick={() => setSignUp(true)}> Sign In</span>
+                            </p>
+                            )}
+                            <hr className='mt-2'/>
+                            <div className="other-options">
+                                <h3 className='text-center mt-5 text-lg text-blue-900'>Continue with : </h3>
+                                <div className="buttons w-full mt-5 flex justify-around">
+                                    <GoogleLogin
+                                    onSuccess={credentialResponse => {
+                                        console.log(credentialResponse);
+                                    }}
+                                    onError={() => {
+                                        console.log('Login Failed');
+                                    }}
+                                    useOneTap
+                                    />
+                                    <button className='w-2/5 bg-blue-800 hover:bg-blue-900 text-white py-2 rounded-md shadow-[5px_6px_0_0_rgba(0,0,0,0.8)]'>Apple</button>
                                 </div>
-                                <div className="mb-5 flex">
-                                    <label htmlFor="password" className='inline-block mr-2'>
-                                        <img src={Password} alt="email photo" className='h-10'/>
-                                    </label>
-                                    <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter your Password" required />
-                                </div>
-                                <div className="submit-container w-full flex justify-center">
-                                    <button type="submit" className="submit-button text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-3/4 px-5 py-2.5 mt-3 shadow-[10px_10px_0_0_rgba(0,0,0,0.8)]" onClick={handleClick}>Submit</button>
-                                </div>
-                                <p className='mt-4 text-center already-logged-in text-blue-900'>Already a user ? 
-                                    <a href="" className="font-bold text-blue-900 hover:underline"> Sign In</a>
-                                </p>
-                                <hr className='mt-2'/>
-                                <div className="other-options">
-                                    <h3 className='text-center mt-5 text-lg text-blue-900'>Continue with : </h3>
-                                    <div className="buttons w-full mt-5 flex justify-around">
-                                        <GoogleLogin
-                                        onSuccess={credentialResponse => {
-                                            console.log(credentialResponse);
-                                        }}
-                                        onError={() => {
-                                            console.log('Login Failed');
-                                        }}
-                                        useOneTap
-                                        />
-                                        <button className='w-2/5 bg-blue-800 hover:bg-blue-900 text-white py-2 rounded-md shadow-[5px_6px_0_0_rgba(0,0,0,0.8)]'>Apple</button>
-                                    </div>
-                                </div>
-                                <div className="connect-with-us flex w-full justify-around mt-10">
-                                    <img src={Instagram} alt="" className='h-12'/>
-                                    <img src={Snapchat} alt="" className='h-12'/>
-                                    <img src={X} alt="" className='h-12'/>
-                                    <img src={Whatsapp} alt="" className='h-12'/>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div className="connect-with-us flex w-full justify-around mt-10">
+                                <img src={Instagram} alt="" className='h-12'/>
+                                <img src={Snapchat} alt="" className='h-12'/>
+                                <img src={X} alt="" className='h-12'/>
+                                <img src={Whatsapp} alt="" className='h-12'/>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </GoogleOAuthProvider>
+            </div>
         </>
     )
 }

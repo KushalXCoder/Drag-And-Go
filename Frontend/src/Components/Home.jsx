@@ -6,6 +6,7 @@ import Photo from "../Other/DragAndDrop.png";
 import Flight from "../Other/Flight.jpg";
 import AI from "../Other/AI.webp";
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const Home = () => {
 
@@ -29,20 +30,16 @@ const Home = () => {
     console.log("Navigated");
   }
 
+  const handleRedirect = () => {
+    navigate('/select-page');
+  }
+
   // Other code
 
   return (
-
     <>
       {/* Navbar */}
-      <nav className='w-full px-8 py-8 bg-transparent fixed z-10'>
-          <motion.h1 className='text-3xl text-amber-500'
-          initial={{opacity: 0, x: -50}}
-          animate={{opacity: 1, x: 0, transition: {duration: 1}}}
-          >
-              Drag And Go
-          </motion.h1>
-      </nav>
+      <Navbar/>
       {/* Container 1 */}
       <div className="container1 h-screen bg-white dark:bg-black">
         <div className="content h-full w-full justify-items-center content-center relative">
@@ -126,6 +123,7 @@ const Home = () => {
         >
           <h1 className='more text-center mt-24 text-orange-400 dark:text-white'>AND MORE ...</h1>
         </motion.div>
+        <button className="temporary text-white bg-blue-600 px-4 py-2 rounded-md" onClick={handleRedirect}>Redirect</button>
       </div>
     </>
   )
