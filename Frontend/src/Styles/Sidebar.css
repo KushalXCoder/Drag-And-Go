@@ -1,0 +1,7 @@
+.sidebar-list, .bottom-items {
+    font-family: "Mona Sans", sans-serif;
+}
+
+.profile-details {
+    scrollbar-width: none;
+}

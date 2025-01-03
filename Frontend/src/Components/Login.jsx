@@ -48,7 +48,7 @@ const Login = () => {
             }
         }
 
-        navigate('/drag-place');
+        navigate('/dashboard');
     }
 
     return (

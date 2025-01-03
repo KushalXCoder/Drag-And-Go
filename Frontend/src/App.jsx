@@ -2,6 +2,7 @@ import './App.css'
 import Home from './Components/Home'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
+import Dashboard from './Components/Dashboard';
 // import DragPage from './Components/DragPage';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/login' element={<Login/>}/>
+            <Route path='/signin' element={<Login/>}/>
+            <Route path='/dashboard' element={<Dashboard/>}/>
             {/* <Route path='/select-page' element={<SelectPlace/>}/> */}
             {/* <Route path='/drag-place' element={<DragPage/>}/> */}
         </Routes>
